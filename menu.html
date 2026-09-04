@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Savora-Kitchen · Menu</title>
+    <!-- Bootstrap 5 + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <!-- Google Font (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <style>
+        /* ---------- GLOBAL STYLES (blue & gold) ---------- */
+        :root {
+            --sk-blue: #0b3b5c;
+            --sk-blue-light: #1a5a7a;
+            --sk-blue-bg: #e8f0f8;
+            --sk-gold: #c9a84c;
+            --sk-gold-light: #e8d48b;
+            --sk-white: #ffffff;
+            --sk-shadow: 0 8px 30px rgba(11, 59, 92, 0.10);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--sk-white);
+            color: #1f2a3a;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .text-sk-blue { color: var(--sk-blue); }
+        .text-sk-gold { color: var(--sk-gold); }
+        .bg-sk-blue { background-color: var(--sk-blue); }
+        .bg-sk-light { background-color: var(--sk-blue-bg); }
+
+        /* Buttons */
+        .btn-sk {
+            background-color: var(--sk-gold);
+            color: #1f2a3a;
+            border: none;
+            padding: 0.7rem 2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 14px rgba(201, 168, 76, 0.3);
+        }
+        .btn-sk:hover {
+            background-color: #b8943a;
+            color: #0b2a3a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201, 168, 76, 0.4);
+        }
+
+        .btn-outline-sk {
+            border: 2px solid var(--sk-gold);
+            color: var(--sk-gold);
+            background: transparent;
+            padding: 0.7rem 2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.25s ease;
+        }
+        .btn-outline-sk:hover {
+            background: var(--sk-gold);
+            color: #1f2a3a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(201, 168, 76, 0.2);
+        }
+
+        /* ---------- NAVBAR ---------- */
+        .navbar-custom {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            padding: 0.7rem 0;
+        }
+        .navbar-custom .navbar-brand {
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: var(--sk-blue);
+            letter-spacing: -0.02em;
+        }
+        .navbar-custom .navbar-brand i {
+            color: var(--sk-gold);
+            font-size: 2rem;
+            margin-right: 8px;
+        }
+        .navbar-custom .nav-link {
+            font-weight: 500;
+            color: #2d3a4a;
+            margin: 0 0.5rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 30px;
+            transition: 0.2s;
+        }
+        .navbar-custom .nav-link:hover,
+        .navbar-custom .nav-link.active {
+            background: var(--sk-blue-bg);
+            color: var(--sk-blue);
+        }
+
+        /* ---------- SECTION TITLE ---------- */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--sk-blue);
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--sk-gold);
+            margin-top: 8px;
+            border-radius: 4px;
+        }
+
+        /* ---------- MENU HERO ---------- */
+        .menu-hero {
+            background: linear-gradient(135deg, #f0f6fd 0%, #dce8f5 100%);
+            padding: 4rem 0 3.5rem;
+            border-bottom: 1px solid rgba(11, 59, 92, 0.06);
+        }
+
+        /* ---------- MENU CATEGORY TABS ---------- */
+        .menu-tabs .nav-link {
+            color: var(--sk-blue);
+            font-weight: 600;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+        .menu-tabs .nav-link:hover {
+            color: var(--sk-gold);
+            border-color: var(--sk-gold);
+        }
+        .menu-tabs .nav-link.active {
+            background: var(--sk-gold);
+            color: #1f2a3a;
+            border-color: var(--sk-gold);
+        }
+
+        /* ---------- MENU ITEM CARD ---------- */
+        .menu-item {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--sk-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(11, 59, 92, 0.04);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(11, 59, 92, 0.12);
+        }
+        .menu-item .item-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+        .menu-item .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+        .menu-item .item-name {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--sk-blue);
+            margin-bottom: 0;
+        }
+        .menu-item .item-price {
+            font-weight: 700;
+            color: var(--sk-gold);
+            font-size: 1.2rem;
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+        .menu-item .item-desc {
+            color: #5a6a7a;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+        .menu-item .item-tag {
+            display: inline-block;
+            background: var(--sk-blue-bg);
+            color: var(--sk-blue);
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            margin-top: 0.5rem;
+            align-self: flex-start;
+        }
+        .menu-item .item-tag.popular {
+            background: var(--sk-gold);
+            color: #1f2a3a;
+        }
+
+        /* ---------- FOOTER ---------- */
+        .footer-custom {
+            background: #0a1e2e;
+            color: #c8dae8;
+            padding: 3rem 0 1.5rem;
+            border-top: 6px solid var(--sk-gold);
+        }
+        .footer-custom a {
+            color: #c8dae8;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .footer-custom a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        .footer-custom .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            color: #c8dae8;
+            font-size: 1.4rem;
+            transition: 0.25s;
+            margin-right: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .footer-custom .social-link:hover {
+            background: var(--sk-gold);
+            color: #0a1e2e;
+            transform: scale(1.05);
+            border-color: var(--sk-gold);
+        }
+        .footer-custom .footer-brand {
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: white;
+        }
+        .footer-custom .footer-brand i {
+            color: var(--sk-gold);
+        }
+
+        @media (max-width: 768px) {
+            .menu-hero h1 { font-size: 2.2rem; }
+            .navbar-custom .navbar-brand { font-size: 1.25rem; }
+            .menu-tabs .nav-link {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+            .menu-item .item-image {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i class="bi bi-cup-hot-fill"></i>
+                <span>savora-<span style="font-weight:300; color:var(--sk-gold);">kitchen</span></span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                    aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="menu.html">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reservation.html">Reservation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <a href="tel:08140119550" class="btn btn-sk btn-sm px-4 py-2">
+                            <i class="bi bi-telephone-fill me-1"></i> Call
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== MENU HERO ========== -->
+    <section class="menu-hero">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="badge bg-sk-blue text-white mb-3 px-4 py-2 rounded-pill" style="font-weight:500;">
+                        <i class="bi bi-book me-1"></i> our menu
+                    </span>
+                    <h1 style="font-weight:700; color:var(--sk-blue); font-size:3rem;">
+                        Culinary <span style="color:var(--sk-gold);">creations</span>
+                    </h1>
+                    <p class="fs-5 mt-3" style="color:#2d4055; max-width:600px;">
+                        Explore our diverse menu featuring African classics, continental 
+                        favorites, and chef-inspired specials.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <span class="badge bg-sk-blue bg-opacity-10 text-sk-blue p-2 px-4 rounded-pill">
+                            <i class="bi bi-clock me-1"></i> 50+ dishes
+                        </span>
+                        <span class="badge bg-sk-blue bg-opacity-10 text-sk-blue p-2 px-4 rounded-pill">
+                            <i class="bi bi-star me-1"></i> Chef's specials
+                        </span>
+                        <span class="badge bg-sk-blue bg-opacity-10 text-sk-blue p-2 px-4 rounded-pill">
+                            <i class="bi bi-leaf me-1"></i> Fresh ingredients
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80"
+                         alt="Menu preview" class="img-fluid rounded-4 shadow-lg"
+                         style="max-height:400px; width:100%; object-fit:cover;" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== MENU CATEGORIES ========== -->
+    <section class="py-5 bg-sk-light">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <span class="text-sk-gold fw-semibold"><i class="bi bi-grid me-1"></i> categories</span>
+                    <h2 class="section-title">Explore our menu</h2>
+                    <p class="mt-2">Discover a world of flavors across our carefully curated categories.</p>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <ul class="nav nav-pills menu-tabs justify-content-center mb-5 flex-wrap gap-2" id="menuTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="all-tab" data-bs-toggle="pill" data-bs-target="#all" type="button" role="tab">All</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="appetizers-tab" data-bs-toggle="pill" data-bs-target="#appetizers" type="button" role="tab">Appetizers</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="mains-tab" data-bs-toggle="pill" data-bs-target="#mains" type="button" role="tab">Main Courses</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="african-tab" data-bs-toggle="pill" data-bs-target="#african" type="button" role="tab">African Specials</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="desserts-tab" data-bs-toggle="pill" data-bs-target="#desserts" type="button" role="tab">Desserts</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="drinks-tab" data-bs-toggle="pill" data-bs-target="#drinks" type="button" role="tab">Drinks</button>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- ALL -->
+                <div class="tab-pane fade show active" id="all" role="tabpanel">
+                    <div class="row g-4">
+                        <!-- Menu items will be loaded here by JS -->
+                        <div id="allMenuItems" class="row g-4"></div>
+                    </div>
+                </div>
+
+                <!-- Appetizers -->
+                <div class="tab-pane fade" id="appetizers" role="tabpanel">
+                    <div class="row g-4" id="appetizersMenuItems"></div>
+                </div>
+
+                <!-- Main Courses -->
+                <div class="tab-pane fade" id="mains" role="tabpanel">
+                    <div class="row g-4" id="mainsMenuItems"></div>
+                </div>
+
+                <!-- African Specials -->
+                <div class="tab-pane fade" id="african" role="tabpanel">
+                    <div class="row g-4" id="africanMenuItems"></div>
+                </div>
+
+                <!-- Desserts -->
+                <div class="tab-pane fade" id="desserts" role="tabpanel">
+                    <div class="row g-4" id="dessertsMenuItems"></div>
+                </div>
+
+                <!-- Drinks -->
+                <div class="tab-pane fade" id="drinks" role="tabpanel">
+                    <div class="row g-4" id="drinksMenuItems"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA / RESERVATION ========== -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center g-4 bg-white p-4 p-md-5 rounded-4 shadow-sm border border-sk-blue border-opacity-10">
+                <div class="col-md-8">
+                    <h3 class="fw-bold" style="color:var(--sk-blue);">
+                        <i class="bi bi-calendar-check me-2" style="color:var(--sk-gold);"></i> Ready to order?
+                    </h3>
+                    <p class="mb-0">Call us to place your order or reserve a table for an unforgettable dining experience.</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <a href="tel:08140119550" class="btn btn-sk px-5"><i class="bi bi-telephone me-2"></i>Call Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer-custom">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="footer-brand d-flex align-items-center">
+                        <i class="bi bi-cup-hot-fill me-2"></i> savora-kitchen
+                    </div>
+                    <p class="mt-2 small" style="color:#b0c8d8;">Food restaurant · African & continental</p>
+                    <p class="small"><i class="bi bi-geo-alt me-1"></i> plot 288, ikeja street, Wadata, Makurdi</p>
+                    <p class="small"><i class="bi bi-telephone me-1"></i> 08140119550</p>
+                    <p class="small"><i class="bi bi-tiktok me-1"></i> @savora-kitchen</p>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="text-white fw-semibold">Quick links</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="#" class="text-decoration-none">Home</a></li>
+                        <li><a href="#" class="text-decoration-none">About</a></li>
+                        <li><a href="#" class="text-decoration-none">Services</a></li>
+                        <li><a href="#" class="text-decoration-none">Menu</a></li>
+                        <li><a href="#" class="text-decoration-none">Gallery</a></li>
+                        <li><a href="#" class="text-decoration-none">Reservation</a></li>
+                        <li><a href="#" class="text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="text-white fw-semibold">Connect with us</h6>
+                    <div class="d-flex flex-wrap">
+                        <a href="#" class="social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-link" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                        <a href="#" class="social-link" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                    </div>
+                    <p class="small mt-3" style="color:#b0c8d8;">
+                        <i class="bi bi-envelope me-1"></i> hello@savorakitchen.com
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.07);" />
+            <div class="text-center small" style="color:#8aacb8;">
+                &copy; developed by Chino Tech Digital<br />
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // ========== MENU DATA ==========
+        const menuData = {
+            appetizers: [
+                { name: "Bruschetta", price: "₦3,500", desc: "Grilled bread with tomatoes, garlic, and basil", image: "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=400&auto=format&fit=crop&q=60", tag: "popular" },
+                { name: "Spring Rolls", price: "₦4,000", desc: "Crispy rolls with vegetable filling, sweet chili dip", image: "https://images.unsplash.com/photo-1625938144755-652e5d1a12a8?w=400&auto=format&fit=crop&q=60" },
+                { name: "Garlic Prawns", price: "₦5,500", desc: "Succulent prawns sautéed in garlic butter", image: "https://images.unsplash.com/photo-1559715541-5daf8a5a9da2?w=400&auto=format&fit=crop&q=60", tag: "chef's pick" }
+            ],
+            mains: [
+                { name: "Grilled Salmon", price: "₦8,500", desc: "Fresh salmon with lemon herb butter and vegetables", image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&auto=format&fit=crop&q=60", tag: "popular" },
+                { name: "Chicken Breast", price: "₦6,500", desc: "Grilled chicken breast with mashed potatoes and gravy", image: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=400&auto=format&fit=crop&q=60" },
+                { name: "Pasta Carbonara", price: "₦7,000", desc: "Creamy pasta with bacon, parmesan, and egg", image: "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400&auto=format&fit=crop&q=60" }
+            ],
+            african: [
+                { name: "Jollof Rice", price: "₦6,000", desc: "Classic Nigerian jollof rice with chicken and plantain", image: "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=400&auto=format&fit=crop&q=60", tag: "popular" },
+                { name: "Egusi Soup", price: "₦7,500", desc: "Rich melon seed soup with assorted meat and pounded yam", image: "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=400&auto=format&fit=crop&q=60" },
+                { name: "Pepper Soup", price: "₦5,500", desc: "Spicy pepper soup with catfish and herbs", image: "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=400&auto=format&fit=crop&q=60", tag: "chef's pick" }
+            ],
+            desserts: [
+                { name: "Chocolate Cake", price: "₦4,500", desc: "Rich chocolate cake with ganache and berries", image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&auto=format&fit=crop&q=60", tag: "popular" },
+                { name: "Panna Cotta", price: "₦4,000", desc: "Italian custard with berry compote", image: "https://images.unsplash.com/photo-1559617311-5c519db6ee2c?w=400&auto=format&fit=crop&q=60" },
+                { name: "Ice Cream", price: "₦3,000", desc: "Premium vanilla or chocolate ice cream", image: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=400&auto=format&fit=crop&q=60" }
+            ],
+            drinks: [
+                { name: "Fresh Juice", price: "₦2,500", desc: "Orange, pineapple, or mixed fruit juice", image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&auto=format&fit=crop&q=60", tag: "fresh" },
+                { name: "Smoothie", price: "₦3,000", desc: "Strawberry, mango, or banana smoothie", image: "https://images.unsplash.com/photo-1546173159-3153f7bf236b?w=400&auto=format&fit=crop&q=60" },
+                { name: "Coffee", price: "₦2,000", desc: "Freshly brewed coffee with your choice of milk", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&auto=format&fit=crop&q=60" }
+            ]
+        };
+
+        // ========== RENDER FUNCTION ==========
+        function renderMenuItems(items, containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            let html = '';
+            items.forEach(item => {
+                const tagHtml = item.tag ? `<span class="item-tag ${item.tag === 'popular' ? 'popular' : ''}">${item.tag}</span>` : '';
+                html += `
+                    <div class="col-md-6 col-lg-4">
+                        <div class="menu-item">
+                            <img src="${item.image}" alt="${item.name}" class="item-image" loading="lazy" />
+                            <div class="item-header">
+                                <h5 class="item-name">${item.name}</h5>
+                                <span class="item-price">${item.price}</span>
+                            </div>
+                            <p class="item-desc">${item.desc}</p>
+                            ${tagHtml}
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // ========== LOAD ALL MENU ITEMS ==========
+        function loadAllMenuItems() {
+            const allItems = [
+                ...menuData.appetizers,
+                ...menuData.mains,
+                ...menuData.african,
+                ...menuData.desserts,
+                ...menuData.drinks
+            ];
+            renderMenuItems(allItems, 'allMenuItems');
+        }
+
+        // ========== LOAD CATEGORY ITEMS ==========
+        function loadCategoryItems() {
+            renderMenuItems(menuData.appetizers, 'appetizersMenuItems');
+            renderMenuItems(menuData.mains, 'mainsMenuItems');
+            renderMenuItems(menuData.african, 'africanMenuItems');
+            renderMenuItems(menuData.desserts, 'dessertsMenuItems');
+            renderMenuItems(menuData.drinks, 'drinksMenuItems');
+        }
+
+        // ========== INITIALIZE ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllMenuItems();
+            loadCategoryItems();
+        });
+
+        // Re-render when tabs are shown (fix for Bootstrap tab content)
+        document.querySelectorAll('#menuTabs .nav-link').forEach(tab => {
+            tab.addEventListener('shown.bs.tab', function(e) {
+                const target = e.target.getAttribute('data-bs-target');
+                // Already rendered, just ensure content is there
+            });
+        });
+
+        console.log('Savora-Kitchen · menu page loaded');
+    </script>
+</body>
+</html>
