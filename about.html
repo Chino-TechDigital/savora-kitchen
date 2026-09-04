@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Savora-Kitchen · About</title>
+  <!-- Bootstrap 5 + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <!-- Google Font (Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <style>
+    /* ---------- GLOBAL STYLES (blue & gold) ---------- */
+    :root {
+      --sk-blue: #0b3b5c;
+      --sk-blue-light: #1a5a7a;
+      --sk-blue-bg: #e8f0f8;
+      --sk-gold: #c9a84c;
+      --sk-gold-light: #e8d48b;
+      --sk-white: #ffffff;
+      --sk-shadow: 0 8px 30px rgba(11, 59, 92, 0.10);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--sk-white);
+      color: #1f2a3a;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .text-sk-blue { color: var(--sk-blue); }
+    .text-sk-gold { color: var(--sk-gold); }
+    .bg-sk-blue { background-color: var(--sk-blue); }
+    .bg-sk-light { background-color: var(--sk-blue-bg); }
+
+    /* Buttons */
+    .btn-sk {
+      background-color: var(--sk-gold);
+      color: #1f2a3a;
+      border: none;
+      padding: 0.7rem 2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px rgba(201, 168, 76, 0.3);
+    }
+    .btn-sk:hover {
+      background-color: #b8943a;
+      color: #0b2a3a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201, 168, 76, 0.4);
+    }
+
+    .btn-outline-sk {
+      border: 2px solid var(--sk-gold);
+      color: var(--sk-gold);
+      background: transparent;
+      padding: 0.7rem 2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.25s ease;
+    }
+    .btn-outline-sk:hover {
+      background: var(--sk-gold);
+      color: #1f2a3a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(201, 168, 76, 0.2);
+    }
+
+    /* ---------- NAVBAR ---------- */
+    .navbar-custom {
+      background: white;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      padding: 0.7rem 0;
+    }
+    .navbar-custom .navbar-brand {
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--sk-blue);
+      letter-spacing: -0.02em;
+    }
+    .navbar-custom .navbar-brand i {
+      color: var(--sk-gold);
+      font-size: 2rem;
+      margin-right: 8px;
+    }
+    .navbar-custom .nav-link {
+      font-weight: 500;
+      color: #2d3a4a;
+      margin: 0 0.5rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 30px;
+      transition: 0.2s;
+    }
+    .navbar-custom .nav-link:hover,
+    .navbar-custom .nav-link.active {
+      background: var(--sk-blue-bg);
+      color: var(--sk-blue);
+    }
+
+    /* ---------- SECTION TITLE ---------- */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--sk-blue);
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--sk-gold);
+      margin-top: 8px;
+      border-radius: 4px;
+    }
+
+    /* ---------- ABOUT HERO ---------- */
+    .about-hero {
+      background: linear-gradient(135deg, #f0f6fd 0%, #dce8f5 100%);
+      padding: 4rem 0 3.5rem;
+      border-bottom: 1px solid rgba(11, 59, 92, 0.06);
+    }
+
+    /* ---------- TEAM CARD ---------- */
+    .team-card {
+      background: white;
+      border-radius: 28px;
+      padding: 2rem 1.5rem;
+      box-shadow: var(--sk-shadow);
+      text-align: center;
+      height: 100%;
+      border: 1px solid rgba(11, 59, 92, 0.04);
+      transition: 0.25s;
+    }
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(11, 59, 92, 0.08);
+    }
+    .team-card img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--sk-blue-bg);
+      margin-bottom: 1rem;
+    }
+
+    /* ---------- STATS ---------- */
+    .stat-number {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--sk-blue);
+      line-height: 1.2;
+    }
+    .stat-label {
+      color: #3a5a6a;
+      font-weight: 500;
+    }
+
+    /* ---------- FOOTER ---------- */
+    .footer-custom {
+      background: #0a1e2e;
+      color: #c8dae8;
+      padding: 3rem 0 1.5rem;
+      border-top: 6px solid var(--sk-gold);
+    }
+    .footer-custom a {
+      color: #c8dae8;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .footer-custom a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+    .footer-custom .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      color: #c8dae8;
+      font-size: 1.4rem;
+      transition: 0.25s;
+      margin-right: 10px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer-custom .social-link:hover {
+      background: var(--sk-gold);
+      color: #0a1e2e;
+      transform: scale(1.05);
+      border-color: var(--sk-gold);
+    }
+    .footer-custom .footer-brand {
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: white;
+    }
+    .footer-custom .footer-brand i {
+      color: var(--sk-gold);
+    }
+
+    @media (max-width: 768px) {
+      .about-hero h1 { font-size: 2.2rem; }
+      .stat-number { font-size: 2rem; }
+      .navbar-custom .navbar-brand { font-size: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <i class="bi bi-cup-hot-fill"></i>
+        <span>savora-<span style="font-weight:300; color:var(--sk-gold);">kitchen</span></span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="reservation.html">Reservation</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item ms-lg-2">
+            <a href="tel:08140119550" class="btn btn-sk btn-sm px-4 py-2">
+              <i class="bi bi-telephone-fill me-1"></i> Call
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== ABOUT HERO ========== -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <span class="badge bg-sk-blue text-white mb-3 px-4 py-2 rounded-pill" style="font-weight:500;">
+            <i class="bi bi-person-badge me-1"></i> about us
+          </span>
+          <h1 style="font-weight:700; color:var(--sk-blue); font-size:3rem;">
+            Crafting <span style="color:var(--sk-gold);">culinary</span> experiences
+          </h1>
+          <p class="fs-5 mt-3" style="color:#2d4055; max-width:600px;">
+            Savora-Kitchen is more than a restaurant — it's a destination for 
+            food lovers. We blend tradition with innovation, serving dishes that 
+            tell a story of passion and excellence.
+          </p>
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <div><i class="bi bi-check-circle-fill text-sk-gold me-1"></i> Est. 2018</div>
+            <div><i class="bi bi-check-circle-fill text-sk-gold me-1"></i> 100% fresh</div>
+            <div><i class="bi bi-check-circle-fill text-sk-gold me-1"></i> Award-winning</div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80"
+               alt="Restaurant interior with food" class="img-fluid rounded-4 shadow-lg"
+               style="max-height:420px; width:100%; object-fit:cover;" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== OUR STORY + MISSION ========== -->
+  <section class="py-5 bg-sk-light">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-md-6">
+          <span class="text-sk-gold fw-semibold"><i class="bi bi-journal-richtext me-1"></i> our story</span>
+          <h2 class="section-title">From passion to plate</h2>
+          <p class="mt-3" style="font-size:1.1rem;">
+            Founded by <strong>Savora Okoro</strong>, Savora-Kitchen was born from 
+            a deep love for food and hospitality. What started as a small kitchen 
+            has grown into a beloved dining destination in Makurdi.
+          </p>
+          <p>
+            We believe every meal should be memorable. That's why we source the 
+            freshest ingredients, experiment with bold flavors, and serve each 
+            dish with warmth and pride.
+          </p>
+          <blockquote class="border-start border-4 border-sk-gold ps-3 mt-3" style="font-style:italic;">
+            “Food is our language of love. Every plate we serve tells a story 
+            of heritage, creativity, and care.”
+          </blockquote>
+        </div>
+        <div class="col-md-6">
+          <span class="text-sk-gold fw-semibold"><i class="bi bi-bullseye me-1"></i> our mission</span>
+          <h2 class="section-title">Excellence in every bite</h2>
+          <ul class="list-unstyled mt-3" style="font-size:1.05rem;">
+            <li class="mb-3"><i class="bi bi-star-fill text-sk-gold me-2"></i> <strong>Quality ingredients</strong> – farm-fresh, locally sourced.</li>
+            <li class="mb-3"><i class="bi bi-heart-fill text-sk-gold me-2"></i> <strong>Warm hospitality</strong> – every guest feels like family.</li>
+            <li class="mb-3"><i class="bi bi-people-fill text-sk-gold me-2"></i> <strong>Community focus</strong> – supporting local farmers & artisans.</li>
+            <li class="mb-3"><i class="bi bi-award-fill text-sk-gold me-2"></i> <strong>Continuous innovation</strong> – creative menus, seasonal specials.</li>
+          </ul>
+          <div class="mt-3 bg-white p-3 rounded-3 shadow-sm d-inline-block">
+            <i class="bi bi-geo-alt-fill text-sk-gold me-1"></i> plot 288, ikeja street, Wadata, Makurdi
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TEAM & STATS ========== -->
+  <section class="py-5">
+    <div class="container">
+      <!-- Team row -->
+      <div class="row justify-content-center text-center mb-5">
+        <div class="col-lg-8">
+          <span class="text-sk-gold fw-semibold"><i class="bi bi-people me-1"></i> leadership</span>
+          <h2 class="section-title">Meet our team</h2>
+          <p class="mt-2">Passionate professionals dedicated to your dining experience.</p>
+        </div>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <!-- CEO -->
+        <div class="col-md-4">
+          <div class="team-card">
+            <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=400&auto=format&fit=crop&q=60" alt="Savora Okoro" />
+            <h5 class="fw-bold">Savora Okoro</h5>
+            <p class="text-sk-gold fw-medium">CEO & Head Chef</p>
+            <p class="small">20+ years of culinary experience. Passionate about African cuisine.</p>
+          </div>
+        </div>
+        <!-- Executive Chef -->
+        <div class="col-md-4">
+          <div class="team-card">
+            <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&auto=format&fit=crop&q=60" alt="Executive Chef" />
+            <h5 class="fw-bold">Amara Obi</h5>
+            <p class="text-sk-gold fw-medium">Executive Chef</p>
+            <p class="small">Specializes in fusion cuisine and innovative plating.</p>
+          </div>
+        </div>
+        <!-- Restaurant Manager -->
+        <div class="col-md-4">
+          <div class="team-card">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&auto=format&fit=crop&q=60" alt="Restaurant Manager" />
+            <h5 class="fw-bold">Chidi Nwachukwu</h5>
+            <p class="text-sk-gold fw-medium">Restaurant Manager</p>
+            <p class="small">Ensures exceptional service and guest satisfaction.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats row -->
+      <div class="row mt-5 pt-4 g-4 text-center bg-sk-light p-4 rounded-4">
+        <div class="col-6 col-md-3">
+          <div class="stat-number">7+</div>
+          <div class="stat-label">Years in business</div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-number">15K+</div>
+          <div class="stat-label">Happy guests</div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Menu items</div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-number">4.8⭐</div>
+          <div class="stat-label">Guest rating</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT SNAPSHOT ========== -->
+  <section class="py-5 bg-sk-light">
+    <div class="container">
+      <div class="row align-items-center g-4 bg-white p-4 p-md-5 rounded-4 shadow-sm border border-sk-blue border-opacity-10">
+        <div class="col-md-8">
+          <h3 class="fw-bold" style="color:var(--sk-blue);">
+            <i class="bi bi-chat-dots me-2" style="color:var(--sk-gold);"></i> Get in touch
+          </h3>
+          <p class="mb-1"><i class="bi bi-telephone-fill text-sk-gold me-2"></i> 08140119550</p>
+          <p class="mb-1"><i class="bi bi-tiktok text-sk-gold me-2"></i> @savora-kitchen</p>
+          <p><i class="bi bi-geo-alt-fill text-sk-gold me-2"></i> plot 288, ikeja street, Wadata, Makurdi</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+          <a href="#" class="btn btn-sk px-5"><i class="bi bi-whatsapp me-2"></i>WhatsApp</a>
+          <p class="small text-secondary mt-2">We reply within minutes</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer-custom">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="footer-brand d-flex align-items-center">
+            <i class="bi bi-cup-hot-fill me-2"></i> savora-kitchen
+          </div>
+          <p class="mt-2 small" style="color:#b0c8d8;">Food restaurant · African & continental</p>
+          <p class="small"><i class="bi bi-geo-alt me-1"></i> plot 288, ikeja street, Wadata, Makurdi</p>
+          <p class="small"><i class="bi bi-telephone me-1"></i> 08140119550</p>
+          <p class="small"><i class="bi bi-tiktok me-1"></i> @savora-kitchen</p>
+        </div>
+        <div class="col-md-4">
+          <h6 class="text-white fw-semibold">Quick links</h6>
+          <ul class="list-unstyled small">
+            <li><a href="#" class="text-decoration-none">Home</a></li>
+            <li><a href="#" class="text-decoration-none">About</a></li>
+            <li><a href="#" class="text-decoration-none">Services</a></li>
+            <li><a href="#" class="text-decoration-none">Menu</a></li>
+            <li><a href="#" class="text-decoration-none">Gallery</a></li>
+            <li><a href="#" class="text-decoration-none">Reservation</a></li>
+            <li><a href="#" class="text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h6 class="text-white fw-semibold">Connect with us</h6>
+          <div class="d-flex flex-wrap">
+            <a href="#" class="social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="#" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+          <p class="small mt-3" style="color:#b0c8d8;">
+            <i class="bi bi-envelope me-1"></i> hello@savorakitchen.com
+          </p>
+        </div>
+      </div>
+      <hr class="my-4" style="border-color: rgba(255,255,255,0.07);" />
+      <div class="text-center small" style="color:#8aacb8;">
+        &copy; developed by Chino Tech Digital<br />
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    console.log('Savora-Kitchen · about page loaded');
+  </script>
+</body>
+</html>
