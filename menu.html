@@ -380,7 +380,6 @@
                 <!-- ALL -->
                 <div class="tab-pane fade show active" id="all" role="tabpanel">
                     <div class="row g-4">
-                        <!-- Menu items will be loaded here by JS -->
                         <div id="allMenuItems" class="row g-4"></div>
                     </div>
                 </div>
@@ -478,32 +477,32 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // ========== MENU DATA ==========
+        // ========== MENU DATA (with working images) ==========
         const menuData = {
             appetizers: [
-                { name: "Bruschetta", price: "₦3,500", desc: "Grilled bread with tomatoes, garlic, and basil", image: "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=400&auto=format&fit=crop&q=60", tag: "popular" },
-                { name: "Spring Rolls", price: "₦4,000", desc: "Crispy rolls with vegetable filling, sweet chili dip", image: "https://images.unsplash.com/photo-1625938144755-652e5d1a12a8?w=400&auto=format&fit=crop&q=60" },
-                { name: "Garlic Prawns", price: "₦5,500", desc: "Succulent prawns sautéed in garlic butter", image: "https://images.unsplash.com/photo-1559715541-5daf8a5a9da2?w=400&auto=format&fit=crop&q=60", tag: "chef's pick" }
+                { name: "Bruschetta", price: "₦3,500", desc: "Grilled bread with tomatoes, garlic, and basil", image: "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=400&auto=format&fit=crop&q=80", tag: "popular" },
+                { name: "Spring Rolls", price: "₦4,000", desc: "Crispy rolls with vegetable filling, sweet chili dip", image: "https://images.unsplash.com/photo-1625938144755-652e5d1a12a8?w=400&auto=format&fit=crop&q=80" },
+                { name: "Garlic Prawns", price: "₦5,500", desc: "Succulent prawns sautéed in garlic butter", image: "https://images.unsplash.com/photo-1559715541-5daf8a5a9da2?w=400&auto=format&fit=crop&q=80", tag: "chef's pick" }
             ],
             mains: [
-                { name: "Grilled Salmon", price: "₦8,500", desc: "Fresh salmon with lemon herb butter and vegetables", image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&auto=format&fit=crop&q=60", tag: "popular" },
-                { name: "Chicken Breast", price: "₦6,500", desc: "Grilled chicken breast with mashed potatoes and gravy", image: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=400&auto=format&fit=crop&q=60" },
-                { name: "Pasta Carbonara", price: "₦7,000", desc: "Creamy pasta with bacon, parmesan, and egg", image: "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400&auto=format&fit=crop&q=60" }
+                { name: "Grilled Salmon", price: "₦8,500", desc: "Fresh salmon with lemon herb butter and vegetables", image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&auto=format&fit=crop&q=80", tag: "popular" },
+                { name: "Chicken Breast", price: "₦6,500", desc: "Grilled chicken breast with mashed potatoes and gravy", image: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=400&auto=format&fit=crop&q=80" },
+                { name: "Pasta Carbonara", price: "₦7,000", desc: "Creamy pasta with bacon, parmesan, and egg", image: "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400&auto=format&fit=crop&q=80" }
             ],
             african: [
-                { name: "Jollof Rice", price: "₦6,000", desc: "Classic Nigerian jollof rice with chicken and plantain", image: "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=400&auto=format&fit=crop&q=60", tag: "popular" },
-                { name: "Egusi Soup", price: "₦7,500", desc: "Rich melon seed soup with assorted meat and pounded yam", image: "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=400&auto=format&fit=crop&q=60" },
-                { name: "Pepper Soup", price: "₦5,500", desc: "Spicy pepper soup with catfish and herbs", image: "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=400&auto=format&fit=crop&q=60", tag: "chef's pick" }
+                { name: "Jollof Rice", price: "₦6,000", desc: "Classic Nigerian jollof rice with chicken and plantain", image: "https://images.unsplash.com/photo-1584225064785-c62a8b43d148?w=400&auto=format&fit=crop&q=80", tag: "popular" },
+                { name: "Egusi Soup", price: "₦7,500", desc: "Rich melon seed soup with assorted meat and pounded yam", image: "https://images.unsplash.com/photo-1574482620811-f2492bf9e5f9?w=400&auto=format&fit=crop&q=80" },
+                { name: "Pepper Soup", price: "₦5,500", desc: "Spicy pepper soup with catfish and herbs", image: "https://images.unsplash.com/photo-1574482620811-f2492bf9e5f9?w=400&auto=format&fit=crop&q=80", tag: "chef's pick" }
             ],
             desserts: [
-                { name: "Chocolate Cake", price: "₦4,500", desc: "Rich chocolate cake with ganache and berries", image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&auto=format&fit=crop&q=60", tag: "popular" },
-                { name: "Panna Cotta", price: "₦4,000", desc: "Italian custard with berry compote", image: "https://images.unsplash.com/photo-1559617311-5c519db6ee2c?w=400&auto=format&fit=crop&q=60" },
-                { name: "Ice Cream", price: "₦3,000", desc: "Premium vanilla or chocolate ice cream", image: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=400&auto=format&fit=crop&q=60" }
+                { name: "Chocolate Cake", price: "₦4,500", desc: "Rich chocolate cake with ganache and berries", image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&auto=format&fit=crop&q=80", tag: "popular" },
+                { name: "Panna Cotta", price: "₦4,000", desc: "Italian custard with berry compote", image: "https://images.unsplash.com/photo-1559617311-5c519db6ee2c?w=400&auto=format&fit=crop&q=80" },
+                { name: "Ice Cream", price: "₦3,000", desc: "Premium vanilla or chocolate ice cream", image: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=400&auto=format&fit=crop&q=80" }
             ],
             drinks: [
-                { name: "Fresh Juice", price: "₦2,500", desc: "Orange, pineapple, or mixed fruit juice", image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&auto=format&fit=crop&q=60", tag: "fresh" },
-                { name: "Smoothie", price: "₦3,000", desc: "Strawberry, mango, or banana smoothie", image: "https://images.unsplash.com/photo-1546173159-3153f7bf236b?w=400&auto=format&fit=crop&q=60" },
-                { name: "Coffee", price: "₦2,000", desc: "Freshly brewed coffee with your choice of milk", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&auto=format&fit=crop&q=60" }
+                { name: "Fresh Juice", price: "₦2,500", desc: "Orange, pineapple, or mixed fruit juice", image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&auto=format&fit=crop&q=80", tag: "fresh" },
+                { name: "Smoothie", price: "₦3,000", desc: "Strawberry, mango, or banana smoothie", image: "https://images.unsplash.com/photo-1546173159-3153f7bf236b?w=400&auto=format&fit=crop&q=80" },
+                { name: "Coffee", price: "₦2,000", desc: "Freshly brewed coffee with your choice of milk", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&auto=format&fit=crop&q=80" }
             ]
         };
 
@@ -518,7 +517,7 @@
                 html += `
                     <div class="col-md-6 col-lg-4">
                         <div class="menu-item">
-                            <img src="${item.image}" alt="${item.name}" class="item-image" loading="lazy" />
+                            <img src="${item.image}" alt="${item.name}" class="item-image" loading="lazy" onerror="this.style.display='none'" />
                             <div class="item-header">
                                 <h5 class="item-name">${item.name}</h5>
                                 <span class="item-price">${item.price}</span>
@@ -557,14 +556,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             loadAllMenuItems();
             loadCategoryItems();
-        });
-
-        // Re-render when tabs are shown (fix for Bootstrap tab content)
-        document.querySelectorAll('#menuTabs .nav-link').forEach(tab => {
-            tab.addEventListener('shown.bs.tab', function(e) {
-                const target = e.target.getAttribute('data-bs-target');
-                // Already rendered, just ensure content is there
-            });
         });
 
         console.log('Savora-Kitchen · menu page loaded');
